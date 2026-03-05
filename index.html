@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ton Yakalama Alıştırması</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+<main class="wrap">
+
+  <header class="top">
+    <h1>Ton Yakalama Alıştırması</h1>
+    <p class="subtitle">Destur, Canlar Bir ses seçin, dinleyin ve aynı tonu yakalamaya çalışın lütfen.</p>
+  </header>
+
+  <section class="card">
+    <h2>Ses seç</h2>
+
+    <select id="soundSelect" class="soundSelect">
+      <optgroup label="Deniz can">
+        <option value="audio/Deniz can bir.mp3">Deniz can 1</option>
+        <option value="audio/Deniz can iki.mp3">Deniz can 2</option>
+        <option value="audio/Deniz can uc.mp3">Deniz can 3</option>
+        <option value="audio/Deniz can dort.mp3">Deniz can 4</option>
+        <option value="audio/Deniz can bes.mp3">Deniz can 5</option>
+        <option value="audio/Deniz can alti.mp3">Deniz can 6</option>
+        <option value="audio/Deniz can yedi.mp3">Deniz can 7</option>
+      </optgroup>
+
+      <optgroup label="EFENDİM">
+        <option value="audio/EFENDİM bir.mp3">EFENDİM 1</option>
+        <option value="audio/EFENDİM iki.mp3">EFENDİM 2</option>
+        <option value="audio/EFENDİM uc.mp3">EFENDİM 3</option>
+        <option value="audio/EFENDİM dort.mp3">EFENDİM 4</option>
+        <option value="audio/EFENDİM bes.mp3">EFENDİM 5</option>
+      </optgroup>
+    </select>
+
+    <p class="muted small" style="margin-top:10px;">
+      İpucu: “🎯 Hedef tonu hazırla”ya basmadan önce referansı 1 kez dinlemen daha iyi sonuç verir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Referans sesi dinle</h2>
+
+    <!-- Varsayılan: Deniz can 1 -->
+    <audio id="refAudio" controls preload="auto" src="audio/Deniz can bir.mp3"></audio>
+
+    <div class="row">
+      <button id="analyzeRefBtn" class="btn">🎯 Hedef tonu hazırla</button>
+    </div>
+
+    <div class="infoGrid">
+      <div class="infoItem">
+        <div class="label">Hedef (Hz)</div>
+        <div class="value" id="targetHz">—</div>
+      </div>
+
+      <div class="infoItem">
+        <div class="label">Hedef Nota</div>
+        <div class="value" id="targetNote">—</div>
+      </div>
+    </div>
+
+    <p id="refStatus" class="status muted">Bir ses seçip “Hedef tonu hazırla”ya bas.</p>
+  </section>
+
+  <section class="card">
+    <h2>Mikrofon ile dene</h2>
+
+    <div class="row">
+      <button id="micBtn" class="btn">🎤 Mikrofonu aç</button>
+      <button id="stopBtn" class="btn secondary" disabled>⏹ Durdur</button>
+    </div>
+
+    <div class="pitchBar">
+      <div class="targetMarker" id="targetMarker"></div>
+      <div class="userMarker" id="userMarker"></div>
+
+      <div class="barLabels">
+        <span>Kalın Ses</span>
+        <span>İnce Ses</span>
+      </div>
+    </div>
+
+    <div class="progressWrap">
+      <div class="progressFill" id="progressFill"></div>
+    </div>
+
+    <div class="infoGrid">
+      <div class="infoItem">
+        <div class="label">Senin tonun (Hz)</div>
+        <div class="value" id="liveHz">—</div>
+      </div>
+
+      <div class="infoItem">
+        <div class="label">Senin notan</div>
+        <div class="value" id="liveNote">—</div>
+      </div>
+    </div>
+
+    <p id="feedback" class="feedbackText">Mikrofon kapalı.</p>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
